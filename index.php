@@ -100,17 +100,11 @@ background-size: cover; background-position: center center;">
 			for($i=0; $i < mysql_num_rows($res); $i++) {
 
 				$codigo = mysql_result($res, $i, 0);
-
-				$consulta2 = "select * from talles where cod_barras = '$codigo'";
-
-				$res2 = mysql_query($consulta2, $conexion);
-
-
 				echo '<tr>';
 
 				for($j=0; $j < mysql_num_fields($res); $j++) {
 
-					if($j == 4) {
+					if($j == 6) {
 						echo '<td><img  class="justify-content-center" style=" display:block; margin:auto; width:75%; height:20%; float:left;"class="img" src="./imagenes/'. mysql_result($res, $i, $j) .'"  /></td>';
 					} else {
 						echo "<td>" . mysql_result($res, $i, $j) . "</td>";
@@ -118,12 +112,12 @@ background-size: cover; background-position: center center;">
 					
 				}
 
-				if(!mysql_result($res2, $i, 1)) {
+				if(!mysql_result($res, $i, 4)) {
 					echo '<td>No posee talle</td>';
 				} else {
 					echo "<td>" . mysql_result($res2, $i, 1) .  "</td>";
 				}
-				if(!mysql_result($res2, $i, 2)) {
+				if(!mysql_result($res, $i, 5)) {
 					echo '<td>No posee stock</td>';
 				} else {
 					echo "<td>" . mysql_result($res2, $i, 2) .  "</td>";
