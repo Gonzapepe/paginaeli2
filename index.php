@@ -1,4 +1,4 @@
-<?php include('layout.html') ?>
+<?php include('templates/layout.html') ?>
 <?php include('server.php') ?>
 
 <?php

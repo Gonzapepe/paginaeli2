@@ -1,18 +1,21 @@
-
-
-<?php include('layout.html')?>
 <?php include('server.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
+
+<!-- STYLES -->
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://kit.fontawesome.com/246cb5c63c.js" crossorigin="anonymous"></script>
+
+<!-- SCRIPTS -->
+
+
+
 <meta charset="utf-8">
   <title>Login</title>
   
 </head>
+
+
 <body class="bg-secondary" style="background-image: url('./imagenes/marvelogin.jpg'); background-repeat: no-repeat;
 background-size: cover; background-position: center center;">
 	 <?php if (isset($_SESSION['success'])) : ?>
@@ -25,6 +28,36 @@ background-size: cover; background-position: center center;">
         </h3>
       </div>
     <?php endif ?>
+
+
+
+
+  <!-- NAV -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+  <ul class="navbar-nav">
+      <li class="nav-item active ">
+        <a href="login.php">
+          <button class="btn btn-outline-light mr-2" >
+            <ion-icon name="contact"></ion-icon>
+          </button>
+         </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+      <li class="nav-item active ">
+        <a href="index.php">
+        <button class="btn btn-outline-light">
+          <ion-icon name="home"></ion-icon>
+        </button>
+      </a>
+      </li>
+    </ul>
+</nav>
+
+
+  <!-- FORMULARIO -->
   <form  method="post" action="login.php" class="mt-4">
   	<?php include('errors.php'); ?>
     <div class="container login-container m-auto " 
@@ -38,11 +71,11 @@ background-size: cover; background-position: center center;">
                     
   	<div class="justify-content-center">
   		<div class="form-group ">
-                            <input type="text" class="form-control mt-5" placeholder="Tu usuario *" value="" name="username"/>
+                            <input type="text" class="form-control mt-5" placeholder="Tu usuario *" value="" name="username" required="required" />
                         </div>
   	</div>
   	<div class="form-group">
-                            <input type="password" class="form-control" placeholder="Tu contraseña *" value="" name="password"/>
+                            <input type="password" class="form-control" placeholder="Tu contraseña *" value="" name="password" required="required" />
                         </div>
   	<div class="form-group text-center">
     <button type="submit" class="btn btn-success"  name="login_user"><i class="fas fa-sign-in-alt text-light "></i> Login</button>
@@ -53,6 +86,15 @@ background-size: cover; background-position: center center;">
     </div>
    </div>
   </form>
-  
+
+
+
+
+  <!-- SCRIPT -->
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/246cb5c63c.js" crossorigin="anonymous"></script>
+
 </body>
 </html>

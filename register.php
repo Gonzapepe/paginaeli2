@@ -1,12 +1,23 @@
 <?php include('server.php') ?>
-<?php include('layout.html') ?>
+<?php include('templates/layout.html') ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>registro</title>
+  <title>Registro</title>
+
+<!-- STYLES -->
+
   <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+<!-- SCRIPTS -->
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+
 	<script src="https://kit.fontawesome.com/246cb5c63c.js" crossorigin="anonymous"></script>
   
 </head>
