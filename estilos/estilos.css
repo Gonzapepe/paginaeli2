@@ -1,0 +1,15 @@
+.img{
+	width: 50%;
+	height: 50%;
+	align-content: center;
+}
+
+.tdimg{
+	overflow-x:auto;
+	width: auto;
+	align-content: center;
+	text-align: center;
+}
+#cortador{
+	clear:both;
+}

@@ -1,0 +1,5 @@
+En el archivo de configuración my.ini:
+ - Buscar UTF 8 Settings
+ - Activar la opción  character_set_server=utf8 (quitarle el # que tienen delante).
+ - Guardar este archivo, apagar y encender nuevamente el servidor Mysql. 
+ 
