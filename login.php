@@ -2,6 +2,7 @@
 
 <?php include('layout.html')?>
 <?php include('server.php') ?>
+
 <!DOCTYPE html>
 <html>
 <head>
