@@ -1,4 +1,5 @@
 <?php include('server.php') ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,7 @@ background-size: cover; background-position: center center;">
   <!-- NAV -->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-  <ul class="navbar-nav">
+  <ul class="navbar-nav ml-5">
       <li class="nav-item active ">
         <a href="login.php">
           <button class="btn btn-outline-light mr-2" >
@@ -45,7 +46,7 @@ background-size: cover; background-position: center center;">
       </li>
     </ul>
 
-    <ul class="navbar-nav">
+    <ul class="navbar-nav m-auto mr-5">
       <li class="nav-item active ">
         <a href="index.php">
         <button class="btn btn-outline-light">

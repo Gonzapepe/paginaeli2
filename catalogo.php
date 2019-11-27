@@ -1,5 +1,5 @@
 <?php include('server.php') ?>
-<?php include('layout.html')?>
+<?php include('templates/layout.html')?>
 <?php 
 
  $connect = mysql_connect("localhost", "root", "");
@@ -40,11 +40,9 @@ background-size: cover; background-position: center center;">
                                <img src="./imagenes/<?php echo $row["foto"];?>" class="img-responsive" style=" margin-right:auto; margin-left:auto; width:100px; height:100px;"/>
                                 </a><br />  
                                <h4 class="text-info"><?php echo $row["nombre"]; ?></h4>  
-                               <h4 class="text-danger">$ <?php echo $row["valor"]; ?></h4>  
-                               <p style="text-overflow: ellipsis; overflow:hidden;"><?php echo $row["talle"] ?> <?php</p>  
+                               <h4 class="text-danger">$ <?php echo $row["valor"]; ?></h4>   
                                <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />  
                                <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />  
-                               <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />  
                           </div> 
                            
                      </form>  

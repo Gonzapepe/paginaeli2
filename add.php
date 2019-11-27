@@ -1,4 +1,8 @@
+
 <?php include('templates/layout.html') ?>
+
+<?php include('server.php') ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -12,29 +16,29 @@
 </head>
 <body class="bg-secondary d-flex" style="background-image: url('./imagenes/14358.jpg'); background-repeat: no-repeat;
 background-size: cover; background-position: center center; flex-direction: column;">
-<form class="mt-3 d-flex" style="justify-content: center; align-items: center; flex: 1" action ="index.php" method="post">
-	<div class="d-flex card p-2 text-light mt-4" style="width: 80%; background: rgba(0, 0 , 0, .8); flex-direction: row;">
+<form class="mt-3 d-flex" style="justify-content: center; align-items: center; flex: 1" action ="" method="post">
+<div class="d-flex card p-2 text-light mt-4" style="width: 80%; background: rgba(0, 0 , 0, .8); flex-direction: row;">
 		<div style="flex: 1">
 			<div class="w-100 p-3">
 				<label style="width: 100%; font-weight: 600">Código</label>
-				<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type='number' name='codigo' required="required"> 
+				<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type='number' id="codigo" name="codigo" required="required" value=""> 
 			</div>
 
 			<div class="w-100 p-3">
 			<label style="width: 100%; font-weight: 600"> Remera </label>
-			<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type="text" name="nombre" required = "required">
+			<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type="text" id="nombre" name="nombre" required = "required" value="">
 		</div>
 			<div class="w-100 p-3">
 			<label style="width: 100%; font-weight: 600"> Valor </label>
-			<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type='number' name="valor" required='required'> 
+			<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type='number' id="valor" name="valor" required='required' value=""> 
 			</div>
 			<div class="w-100 p-3">
 			<label style="width: 100%; font-weight: 600"> Descripción</label>
-			<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type='text' name="descripcion" type='text'> 
+			<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type='text' id="descripcion" name="descripcion" type='text' value=""> 
 			</div>
 			<div class="w-100 p-3">
 			<label style="width: 100%; font-weight: 600"> Stock </label>
-			<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type='number' name='stock' required='required'> 
+			<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type='number' id="stock" name='stock' required='required' value=""> 
 			</div>
 		</div>
 		
@@ -42,7 +46,7 @@ background-size: cover; background-position: center center; flex-direction: colu
 
 			<div class="w-100 p-3">
 			<label style="width: 100%; font-weight: 600"> Talle </label>
-			<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type='text' name='talle' required='required'> 
+			<input style="width: 80%; border-radius: 2px; border: none; padding: 5px;" type='text' name='talle' required='required' value=""> 
 			</div>
 			<div class="w-100 p-3">
 			<label style="width: 100%; font-weight: 600"> Foto </label>
@@ -50,7 +54,7 @@ background-size: cover; background-position: center center; flex-direction: colu
 			</div>
 
 				<div class="d-flex" style="flex-direction: column; align-items: center;">
-		 		<button class="btn btn-success p-3" style="" type="submit" name="subir"><i class="fas fa-upload"></i> Subir Remera </button>
+		 		<button class="btn btn-success p-3" type="submit" name="subir" value="subir"><i class="fas fa-upload"></i> Subir Remera </button>
 		 		<p class="mt-2"> ¿Su remera ya está?</p> 
 		 		<a href='index.php'>búsquela por su código o nombre. </a>
 		 	</div>
@@ -94,7 +98,8 @@ if(isset($_POST['subir'])){
 
 
 <?php
-
+$conexion = mysql_connect("localhost","root","");
+mysql_select_db("registro",$conexion);
 	if (isset($_POST["subir"])) {
 		
 	$codigo = $_POST["codigo"];
@@ -105,10 +110,9 @@ if(isset($_POST['subir'])){
 	$talle = $_POST["talle"];
 	$stock = $_POST["stock"];
 	
-	$conexion = mysql_connect("localhost","root","");
-	mysql_select_db("registro",$conexion);
-	$consulta = "insert into store (cod_barras, nombre, valor, descripcion, foto) values ($codigo, '$nombre',$valor, '$descripcion', '$foto') ";
-	$consulta2 = "insert into talles (cod_barras, talle, stock) values ('$codigo, '$talle', '$stock')";
+	
+	$consulta = "insert into store (cod_barras, nombre, valor, descripcion, foto) values ('$codigo', '$nombre',$valor, '$descripcion', '$foto') ";
+	$consulta2 = "insert into talles (cod_barras, talle, stock) values ('$codigo', '$talle', '$stock')";
 	$res = mysql_query($consulta,$conexion);
 	$res2 = mysql_query($consulta2, $conexion);
 	if ($res=="1" && $res2=="1") {

@@ -1,7 +1,9 @@
-<?php include('templates/layout.html') 
+<?php 
+
+include('templates/layout.html'); 
 
 $connection = mysql_connect('localhost', 'root', '');
-mysql_select_db('registro',$db);
+mysql_select_db('registro',$connection);
 
 if(isset($_POST["delete"])){
 
