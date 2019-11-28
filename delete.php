@@ -64,7 +64,7 @@ mysql_select_db('registro',$connection);
 
 ?>
 
-		<form method="post" action="delete.php"  style="list-style:none; margin:0px; padding:0px;">
+		
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4">
@@ -75,14 +75,14 @@ mysql_select_db('registro',$connection);
 
 						<input class="card-text" id="id" name="id" value="<?php echo $id?>" readonly="readonly"></input>
 						<h5 class="card-title"><?php echo $nombre ?></h5>
-						<h6 class="card-title"><?php echo $valor ?></h5>
+						<h6 class="card-title">$<?php echo $valor ?></h5>
 
-						<button class="btn btn-danger" id="delete">Borrar</button>
+						<button class="btn btn-danger" id="delete" name="delete">Borrar</button>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>
+
 
 
 
