@@ -30,21 +30,35 @@ mysql_select_db('registro',$connection);
                 {  
                      while($row = mysql_fetch_array($result))  
                      {  
-                     	$id = $row["cod_barras"];
-                     	$foto = $row["foto"];
-                     	$nombre = $row["nombre"];
-               			$valor	= $row["valor"];
-               
+       
+ ?>             <form action="delete.php" method="POST">
+				        <div class="container">
+							<div class="row">
+								<div class="col-sm-4">
+									<div class="card">
+										<img src="imagenes/<?php echo $row["foto"] ?>" alt="">
+									</div>
+									
+									<div class="card-body">
 
+										<input class="card-text" id="id" name="id" value="<?php echo $row["cod_barras"]?>" readonly="readonly"></input>
+										<h5 class="card-title"><?php echo $row["nombre"] ?></h5>
+										<h6 class="card-title">$<?php echo $row["valor"] ?></h5>
+
+										<button type="submit" class="btn btn-danger" id="delete" name="delete">Borrar</button>
+									</div>
+								</div>								
+							</div>
+						</div>
+				</form>	
+<?php
 					 }
 					}
 
 
 
 
-	
-
-			error_reporting(E_ERROR | E_PARSE);
+	error_reporting(E_ERROR | E_PARSE);
 				if(isset($_POST["delete"])){
 
 				$id = $_POST["id"];
@@ -62,28 +76,8 @@ mysql_select_db('registro',$connection);
 			}
 		}
 
+
 ?>
-
-		
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="card">
-						<img src="imagenes/<?php echo $foto ?>" alt="">
-					</div>
-					<div class="card-body">
-
-						<input class="card-text" id="id" name="id" value="<?php echo $id?>" readonly="readonly"></input>
-						<h5 class="card-title"><?php echo $nombre ?></h5>
-						<h6 class="card-title">$<?php echo $valor ?></h5>
-
-						<button class="btn btn-danger" id="delete" name="delete">Borrar</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
 
 
 </body>
