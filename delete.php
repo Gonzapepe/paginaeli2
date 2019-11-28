@@ -18,10 +18,11 @@ mysql_select_db('registro',$connection);
 	<script src="https://kit.fontawesome.com/246cb5c63c.js" crossorigin="anonymous"></script>
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<title>Document</title>
+	<title>UniMarvel</title>
 </head>
 <body>
-<div class="" style="margin:auto; width:950px; border:1px solid;">
+
+
 <?php  
                 $query = "SELECT * FROM store ORDER BY cod_barras ASC";  
                 $result = mysql_query( $query, $connection);  
@@ -29,48 +30,61 @@ mysql_select_db('registro',$connection);
                 {  
                      while($row = mysql_fetch_array($result))  
                      {  
-                ?>  
-	<form method="post" action="delete.php"  style="list-style:none; margin:0px; padding:0px;">
-		<li style="width:300px; float:left; border:1px solid #d1d1d1; margin-top:50px; margin-left:10 px; margin-right:10px; ">
-			<div class="col-md-4" style="text-align:center; margin:auto; padding-top:15px;">
-		
-			<input type="readonly" id="id" name="id" value="<?php echo $row["cod_barras"];?>"/>
-			<a href="./imagenes/<?php echo $row["foto"];?>">
-                               <img src="./imagenes/<?php echo $row["foto"];?>" class="img-responsive" style=" margin-right:auto; margin-left:auto; width:100px; height:100px;"/></a>
-			</div>
-							   <h3><?php echo $row["nombre"];?> </h3>
-							   <h3><?php echo $row["valor"];?></h3>
-							   <button style="margin-left:35%;"type="submit" name="delete" class="btn btn-danger mb-3">Eliminar</button>
-		</li>
-	</form>
-</div>
-	<?php
+                     	$id = $row["cod_barras"];
+                     	$foto = $row["foto"];
+                     	$nombre = $row["nombre"];
+               			$valor	= $row["valor"];
+               
+
 					 }
 					}
-	?>
-<?php
-
-error_reporting(E_ERROR | E_PARSE);
-if(isset($_POST["delete"])){
-
-$id = $_POST["id"];
 
 
-$query = "DELETE FROM store WHERE cod_barras = '$id'";
-
-$result = mysql_query($query, $connection);
 
 
-if(!$result){
-	die("Consulta fallida");
-}else{
-	echo "<script>alert(Informacion borrada satisfactoriamente)</script>";
-}
+	
+
+			error_reporting(E_ERROR | E_PARSE);
+				if(isset($_POST["delete"])){
+
+				$id = $_POST["id"];
 
 
-}
+				$query = "DELETE FROM store WHERE cod_barras = '$id'";
+
+				$result = mysql_query($query, $connection);
+
+
+			if(!$result){
+				die("Consulta fallida");
+			}else{
+				echo "<script>alert(Informacion borrada satisfactoriamente)</script>";
+			}
+		}
 
 ?>
+
+		<form method="post" action="delete.php"  style="list-style:none; margin:0px; padding:0px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="card">
+						<img src="imagenes/<?php echo $foto ?>" alt="">
+					</div>
+					<div class="card-body">
+
+						<input class="card-text" id="id" name="id" value="<?php echo $id?>" readonly="readonly"></input>
+						<h5 class="card-title"><?php echo $nombre ?></h5>
+						<h6 class="card-title"><?php echo $valor ?></h5>
+
+						<button class="btn btn-danger" id="delete">Borrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+
 
 </body>
 </html>
