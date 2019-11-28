@@ -11,12 +11,12 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/246cb5c63c.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="boostrap.css">
+	<link rel="stylesheet" type="text/css" href="./boostrap.css">
 	<title>agregar</title>
 </head>
 <body class="bg-secondary d-flex" style="background-image: url('./imagenes/14358.jpg'); background-repeat: no-repeat;
 background-size: cover; background-position: center center; flex-direction: column;">
-<form class="mt-3 d-flex" style="justify-content: center; align-items: center; flex: 1" action ="" method="post">
+<form class="mt-3 d-flex" style="justify-content: center; align-items: center; flex: 1" action ="add.php" method="post">
 <div class="d-flex card p-2 text-light mt-4" style="width: 80%; background: rgba(0, 0 , 0, .8); flex-direction: row;">
 		<div style="flex: 1">
 			<div class="w-100 p-3">
@@ -99,27 +99,27 @@ if(isset($_POST['subir'])){
 
 <?php
 $conexion = mysql_connect("localhost","root","");
+if(!$conexion){
+	die("No se pudo conectar a la base de datos.".mysql_error());
+}
 mysql_select_db("registro",$conexion);
 	if (isset($_POST["subir"])) {
-		
-	$codigo = $_POST["codigo"];
-	$nombre =$_POST["nombre"];
-	$valor = $_POST["valor"];
-	$descripcion = $_POST["descripcion"];
-	$foto = $_FILES["foto"]["name"];
-	$talle = $_POST["talle"];
-	$stock = $_POST["stock"];
+		$codigo = $_POST["codigo"];
+		$nombre = $_POST["nombre"];
+		$valor = $_POST["valor"];
+		$descripcion = $_POST["descripcion"];
+		$talle = $_POST["talle"];
+		$stock = $_POST["stock"];
+		$foto = $_FILES["foto"]["name"];
 	
-	
-	$consulta = "insert into store (cod_barras, nombre, valor, descripcion, foto) values ('$codigo', '$nombre',$valor, '$descripcion', '$foto') ";
-	$consulta2 = "insert into talles (cod_barras, talle, stock) values ('$codigo', '$talle', '$stock')";
+	$consulta = "INSERT INTO store (cod_barras, nombre, valor, descripción, talle, stock, foto) VALUES ('$codigo', '$nombre',$valor, '$descripcion', '$talle', '$stock', '$foto') ";
 	$res = mysql_query($consulta,$conexion);
-	$res2 = mysql_query($consulta2, $conexion);
-	if ($res=="1" && $res2=="1") {
-		echo "<script> alert( 'La remera se agregó al sistema.' ); window.location='add.php' </script>";
+	if (!$res) {
+		echo"<script> alert( 'La remera  no se ha agregado al sistema' ); window.location='add.php' </script>";
 	}
 	else{
-		echo"<script> alert( 'La remera  no se ha agregado al sistema' ); window.location='add.php' </script>";
+		
+		echo "<script> alert( 'La remera se agregó al sistema.' ); window.location='add.php' </script>";
 	}
 
 		mysql_close($conexion);

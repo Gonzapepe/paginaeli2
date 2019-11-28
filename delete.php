@@ -30,9 +30,11 @@ mysql_select_db('registro',$connection);
                      while($row = mysql_fetch_array($result))  
                      {  
                 ?>  
-	<ul style="list-style:none; margin:0px; padding:0px;">
-		<li style="width:300px; float:left; border:1px solid #d1d1d1; margin-top:50px; margin-left:10 px; margin-right:10px;">
+	<form method="post" action="delete.php"  style="list-style:none; margin:0px; padding:0px;">
+		<li style="width:300px; float:left; border:1px solid #d1d1d1; margin-top:50px; margin-left:10 px; margin-right:10px; ">
 			<div class="col-md-4" style="text-align:center; margin:auto; padding-top:15px;">
+		
+			<input type="readonly" id="id" name="id" value="<?php echo $row["cod_barras"];?>"/>
 			<a href="./imagenes/<?php echo $row["foto"];?>">
                                <img src="./imagenes/<?php echo $row["foto"];?>" class="img-responsive" style=" margin-right:auto; margin-left:auto; width:100px; height:100px;"/></a>
 			</div>
@@ -40,7 +42,7 @@ mysql_select_db('registro',$connection);
 							   <h3><?php echo $row["valor"];?></h3>
 							   <button style="margin-left:35%;"type="submit" name="delete" class="btn btn-danger mb-3">Eliminar</button>
 		</li>
-	</ul>
+	</form>
 </div>
 	<?php
 					 }
@@ -48,7 +50,7 @@ mysql_select_db('registro',$connection);
 	?>
 <?php
 
-
+error_reporting(E_ERROR | E_PARSE);
 if(isset($_POST["delete"])){
 
 $id = $_POST["id"];
@@ -56,13 +58,13 @@ $id = $_POST["id"];
 
 $query = "DELETE FROM store WHERE cod_barras = '$id'";
 
-$result = mysql_query($connection, $query);
+$result = mysql_query($query, $connection);
 
 
 if(!$result){
 	die("Consulta fallida");
 }else{
-	echo "Informacion borrada satisfactoriamente";
+	echo "<script>alert(Informacion borrada satisfactoriamente)</script>";
 }
 
 
