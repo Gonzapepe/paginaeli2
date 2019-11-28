@@ -92,9 +92,9 @@ background-size: cover; background-position: center center;">
 			      	<th scope="col">Nombre</th>
 			      	<th scope="col">Valor</th>
 			      	<th scope="col">Descripción</th>
-			      	<th scope="col">Foto</th>
 			      	<th scope="col">Talle</th>
-			      	<th scope="col">Stock</th>
+					<th scope="col">Stock</th>
+					<th scope="col">Foto</th>
     			</tr>';
 
 			for($i=0; $i < mysql_num_rows($res); $i++) {
