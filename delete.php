@@ -31,19 +31,21 @@ mysql_select_db('registro',$connection);
                      while($row = mysql_fetch_array($result))  
                      {  
        
- ?>             <form action="delete.php" method="POST">
-				        <div class="container">
-							<div class="row">
+ ?>             <form style=" height:600px; width:400px; float:left; margin-right:10px; margin-left:10px;" action="delete.php" method="POST">
+				        <div class="container border border-warning" style="margin-top:25px;">
+							<div class="row mr-2">
 								<div class="col-sm-4">
-									<div class="card">
-										<img src="imagenes/<?php echo $row["foto"] ?>" alt="">
+									<div>
+										<a href="./imagenes/<?php echo $row["foto"];?>">
+										<img class="img-responsive mt-4" style="margin-right:auto; margin-left:40px; width:300px; height:250px; text-align:center;"src="./imagenes/<?php echo $row["foto"]; ?>" alt="">
+										</a>
 									</div>
 									
 									<div class="card-body">
 
 										<input class="card-text" id="id" name="id" value="<?php echo $row["cod_barras"]?>" readonly="readonly"></input>
 										<h5 class="card-title"><?php echo $row["nombre"] ?></h5>
-										<h6 class="card-title">$<?php echo $row["valor"] ?></h5>
+										<h6 class="card-title">$<?php echo $row["valor"] ?></h6>
 
 										<button type="submit" class="btn btn-danger" id="delete" name="delete">Borrar</button>
 									</div>
